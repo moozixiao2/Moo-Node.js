@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>微博发布效果</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <form action="/leaveMessage" method="get" id="wbform">
+        <div class="weibo">
+            <input type="hidden" id='time' name="time">
+            <div id='nameWrap'>
+                <input type="text" name="name" id='name' placeholder="请输入你的名字">
+                <label for="name">请输入用户名</label>
+            </div>
+            <textarea class="weibo-text" name="message"></textarea>
+            <input class="weibo-btn" value="发布" type="button">
+            <!-- <ul class="weibo-list"> -->
+                <!-- {{ each arr val}}
+                <li>
+                <p class="content">{{ val.name }} : {{ val.msg }}</p>
+                    <span class="del">删除</span>
+                    <span class="time">{{ val.time }}</span>
+                </li>
+                {{ /each }} -->
+                <!-- <li>
+                    <p class="content">快来收了这九款用上就停不下来的应用吧！！</p>
+                    <span class="del">删除</span>
+                    <span class="time">1212313</span>
+                </!-->
+            <!-- </ul> -->
+        </div>
+    </form>
+</body>
+<script src="../assets/js/index.js"></script>
+</html>
