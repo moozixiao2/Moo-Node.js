@@ -29,5 +29,7 @@ router.get('/edit', (req, res) => {
 router.post('/editHeroById', (req, res) => {
     controller.editHeroById(req, res);
 })
+//文件上传
+router.post('/uploadFile', controller.uploadFile);
 //暴露
 module.exports = router;

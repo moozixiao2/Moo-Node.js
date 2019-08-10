@@ -1,5 +1,25 @@
 $(function(){
     let name = document.querySelector('input[name = "name"]');
+    //文件上传
+    $('#img').on('change', function(){
+        let file = this.files[0];
+        let fd = new FormData();
+        fd.append('pic', file);
+        $.ajax({
+            type: 'post',
+            url: '/uploadFile',
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function(res){
+                if(res.code === 200){
+                    console.log(res)
+                    $('#photo').attr('src', '/assets/image/' + res.pic);
+                    $('#headSrc').val(res.pic);
+                }
+            }
+        })
+    })
     //点击
     $('#sub').on('click', () => {
         //交互常识
