@@ -1,9 +1,10 @@
 //引入数据层
 const model = require('./model');
-
+const formidable = require('formidable');
+const path = require('path')
 //创建控制层对象并暴露
 module.exports = {
-    getIndexHtml,getAddHtml,delHeroById,addHeroById,getEditHtml,editHeroById
+    getIndexHtml,getAddHtml,delHeroById,addHeroById,getEditHtml,editHeroById,uploadFile
 }
 
 //主页
@@ -69,5 +70,20 @@ function editHeroById(req, res){
             response.msg = '修改失败';
         }
         res.send(response);
+    })
+}
+//图片上传
+function uploadFile(req,res){
+    let form = formidable.IncomingForm();
+    form.encoding = 'utf-8';
+    form.uploadDir = __dirname + '/assets/image';
+    form.keepExtensions = true;
+    form.parse(req, (err, fields, files) => {
+        if(err){
+            res.json({code: 400, msg: '文件上传错误'})
+        }else{
+            let imgName = path.basename(files.pic.path);
+            res.json({code: 200, msg: '文件上传成功', pic: imgName})
+        }
     })
 }

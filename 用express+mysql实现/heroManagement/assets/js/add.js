@@ -1,4 +1,22 @@
 $(function(){
+    $('#img').on('change', function(){
+        let file = this.files[0];
+        let fd = new FormData();
+        fd.append('pic', file);
+        $.ajax({
+            type: 'post',
+            url: '/uploadFile',
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function(res){
+                if(res.code === 200){
+                    $('#photo').attr('src', '/assets/image/' + res.pic);
+                    $('#headSrc').val(res.pic);
+                }
+            }
+        })
+    })
     let name = document.querySelector('input[name = "name"]');
     //点击
     $('#sub').on('click', () => {
